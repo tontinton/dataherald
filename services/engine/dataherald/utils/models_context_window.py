@@ -1,4 +1,5 @@
 OPENAI_CONTEXT_WIDNOW_SIZES = {
+    "gpt-4o": 8000,
     "gpt-4": 8000,
     "gpt-4-0613": 8000,
     "gpt-4-32k": 32000,
@@ -21,4 +22,5 @@ OPENAI_FINETUNING_MODELS_WINDOW_SIZES = {
     "gpt-3.5-turbo": 4000,
     "gpt-4": 8000,
     "gpt-4-0613": 8000,
+    "gpt-4o": 8000,
 }

@@ -92,7 +92,7 @@ class SQLGenerationService:
         db_connection_repository = DatabaseConnectionRepository(self.storage)
         db_connection = db_connection_repository.find_by_id(prompt.db_connection_id)
         database = SQLDatabase.get_sql_engine(db_connection, True)
-        if sql_generation_request.sql is not None:
+        if sql_generation_request.sql is not None and sql_generation_request.sql != "":
             sql_generation = SQLGeneration(
                 prompt_id=prompt_id,
                 sql=sql_generation_request.sql,
