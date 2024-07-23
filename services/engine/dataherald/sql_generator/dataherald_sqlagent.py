@@ -666,21 +666,28 @@ class DataheraldSQLAgent(SQLGenerator):
     ) -> AgentExecutor:
         """Construct an SQL agent from an LLM and tools."""
         tools = toolkit.get_tools()
+        tip_number = None
         if max_examples > 0 and number_of_instructions > 0:
             plan = PLAN_WITH_FEWSHOT_EXAMPLES_AND_INSTRUCTIONS
             suffix = SUFFIX_WITH_FEW_SHOT_SAMPLES
         elif max_examples > 0:
             plan = PLAN_WITH_FEWSHOT_EXAMPLES
             suffix = SUFFIX_WITH_FEW_SHOT_SAMPLES
+            tip_number = 7
         elif number_of_instructions > 0:
             plan = PLAN_WITH_INSTRUCTIONS
             suffix = SUFFIX_WITHOUT_FEW_SHOT_SAMPLES
         else:
             plan = PLAN_BASE
             suffix = SUFFIX_WITHOUT_FEW_SHOT_SAMPLES
+            tip_number = 5
+        extras = ''
+        if toolkit.dialect == "trino" and tip_number is not None:
+            extras = "tip{}) Don't put a semicolon in the SQL query.".format(tip_number)
         plan = plan.format(
             dialect=toolkit.dialect,
             max_examples=max_examples,
+            extras=extras
         )
         prefix = prefix.format(
             dialect=toolkit.dialect, max_examples=max_examples, agent_plan=plan

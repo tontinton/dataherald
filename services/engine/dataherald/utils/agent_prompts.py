@@ -62,6 +62,7 @@ tip3) The Question/SQL pairs are labelled as correct pairs, so you can use them 
 tip4) If SQL results has None or NULL values, handle them by adding a WHERE clause to filter them out.
 tip5) The existence of the string values in the columns should always be checked using the DbColumnEntityChecker tool.
 tip6) You should always execute the SQL query by calling the SqlDbQuery tool to make sure the results are correct.
+{extras}
 """  # noqa: E501
 
 PLAN_BASE = """1) Use the DbTablesWithRelevanceScores tool to find relevant tables.
@@ -76,6 +77,7 @@ tip1) If the SQL query resulted in errors or not correct results, rewrite the SQ
 tip2) If SQL results has None or NULL values, handle them by adding a WHERE clause to filter them out.
 tip3) The existence of the string values in the columns should always be checked using the DbColumnEntityChecker tool.
 tip4) You should always execute the SQL query by calling the SqlDbQuery tool to make sure the results are correct.
+{extras}
 """  # noqa: E501
 
 FORMAT_INSTRUCTIONS = """Use the following format:
