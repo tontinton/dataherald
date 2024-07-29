@@ -88,6 +88,7 @@ class SupportedDialects(Enum):
     BIGQUERY = "bigquery"
     SQLITE = "sqlite"
     REDSHIFT = "redshift"
+    TRINO = "trino"
 
 
 class DatabaseConnection(BaseModel):
